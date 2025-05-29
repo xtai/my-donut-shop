@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Donut Shop</title>
+    <link href="./assets/bootstrap.min.css" rel="stylesheet" />
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '915460960508331');
+      fbq('track', 'PageView');
+      setInterval(function() {
+        console.log("fbq View Content");
+        fbq('track', 'ViewContent');
+        if (typeof cbq === 'function') {
+          console.log("cbq View Content");
+          cbq('track', 'ViewContent');
+        }
+      }, 10000);
+    </script>
+  </head>
+  <body class="bg-primary-subtle">
+    <nav class="container-fulid p-5" style="background-color: rgba(var(--bs-primary-rgb), 0.1)">
+      <h1 class="text-center text-primary-emphasis">Welcome to My Donut Shop</h1>
+    </nav>
+    <div class="container" style="max-width: 720px">
+      <div class="d-flex m-5 flex-column gap-4">
+        <div class="d-flex flex-row card p-3 gap-3 border-primary-subtle rounded-4">
+          <div class="border p-1 rounded-2 flex-shrink-0">
+            <img src="./assets/d1.jpg" class="img-fluid" width="200" alt="Donut Image" />
+          </div>
+          <div class="d-flex flex-column flex-grow-1">
+            <div class="flex-fill">
+              <h5>Glazed</h5>
+              <p><b>$3.00</b></p>
+              <p>A fluffy ring with a glazed frosting coating. Basically, the vanilla of donuts.</p>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                onclick="fbq('track', 'Purchase', {currency: 'USD', value: 3.0, content_ids: ['Glazed'], content_type: 'product'});">
+                Order Now
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-row card p-3 gap-3 border-primary-subtle rounded-4">
+          <div class="border p-1 rounded-2 flex-shrink-0">
+            <img src="./assets/d2.jpg" class="img-fluid" width="200" alt="Donut Image" />
+          </div>
+          <div class="d-flex flex-column flex-grow-1">
+            <div class="flex-fill">
+              <h5>Chocolate</h5>
+              <p><b>$3.50</b></p>
+              <p>It's a fluffy ring with chocolate on it. What more could you want?</p>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                onclick="fbq('track', 'Purchase', {currency: 'USD', value: 3.5, content_ids: ['Chocolate'], content_type: 'product'});">
+                Order Now
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-row card p-3 gap-3 border-primary-subtle rounded-4">
+          <div class="border p-1 rounded-2 flex-shrink-0">
+            <img src="./assets/d3.jpg" class="img-fluid" width="200" alt="Donut Image" />
+          </div>
+          <div class="d-flex flex-column flex-grow-1">
+            <div class="flex-fill">
+              <h5>Sprinkles</h5>
+              <p><b>$3.50</b></p>
+              <p>A traditional cake ring with chocolate or maple frosting and some character-adding sprinkles.</p>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                onclick="fbq('track', 'Purchase', {currency: 'USD', value: 3.5, content_ids: ['Sprinkles'], content_type: 'product'});">
+                Order Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="container-fulid text-center p-5" style="background-color: rgba(var(--bs-primary-rgb), 0.1)">
+      <p class="h4 text-primary-emphasis">My Donut Shop</p>
+      <p>1621 Polk St, San Francisco<br />(555) 010-2368</p>
+    </footer>
+  </body>
+</html>

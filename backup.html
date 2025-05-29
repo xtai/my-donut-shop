@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Sean Tai" />
+    <link rel="icon" href="./assets/favicon.svg" />
+    <title>My Donut Shop</title>
+    <link href="./assets/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body class="bg-light-subtle vh-100">
+    <div class="container-fluid p-3 h-100">
+      <div class="row g-3 h-100">
+        <div class="col-4 h-100 d-flex flex-column gap-2">
+          <p class="h4">Website Code</p>
+          <div class="border rounded-2 p-3 bg-white d-flex flex-column flex-fill gap-2">
+            <div>
+              <code>&lt;html&gt;<br /></code>
+              <code class="ps-2">&lt;head&gt;<br /></code>
+              <code class="ps-4">…</code>
+            </div>
+            <div class="ps-4 flex-fill d-flex">
+              <div class="form-floating flex-fill">
+                <textarea
+                  wrap="off"
+                  class="form-control h-100"
+                  id="textarea"
+                  style="font-family: monospace, monospace"></textarea>
+                <label for="textarea">Add additional header code here</label>
+              </div>
+            </div>
+            <div class="pb-4">
+              <code class="ps-2">&lt;/head&gt;<br /></code>
+              <code class="ps-2">&lt;body&gt;<br /></code>
+              <code class="ps-4">…<br /></code>
+              <code class="ps-2">&lt;/body&gt;<br /></code>
+              <code>&lt;/html&gt;</code>
+            </div>
+            <div class="d-grid">
+              <button type="button" class="btn btn-primary" id="save-button">Save</button>
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex flex-column g-3 gap-2">
+          <p class="h4">Website</p>
+          <div class="flex-fill d-flex">
+            <iframe id="preview" srcdoc="" class="border border-primary-subtle rounded-2 flex-fill"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const textarea = document.getElementById('textarea');
+      const loaclValue = localStorage.getItem('donutShopHeaderValue');
+      if (loaclValue) {
+        textarea.value = loaclValue;
+      }
+
+      const saveButton = document.getElementById('save-button');
+      const preview = document.getElementById('preview');
+      const beforeHeader = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <title>My Donut Shop</title>
+          <link href="./assets/bootstrap.min.css" rel="stylesheet" />
+          <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '915460960508331');
+            fbq('init', '239218378685341');
+            fbq('init', '609661981086441');
+            fbq('track', 'PageView');
+            setInterval(function() {
+              console.log("fbq View Content");
+              fbq('track', 'ViewContent');
+              if (typeof cbq === 'function') {
+                console.log("cbq View Content");
+                cbq('track', 'ViewContent');
+              }
+            }, 10000);
+          <\/script>`;
+      const afterHeader = `
+        </head>
+        <body class="bg-primary-subtle">
+          <nav class="container-fulid p-5" style="background-color: rgba(var(--bs-primary-rgb), .1)">
+            <h1 class="text-center text-primary-emphasis">Welcome to My Donut Shop</h1>
+          </nav>
+          <div class="container" style="max-width: 720px">
+            <div class="d-flex m-5 flex-column gap-4">
+              <div class="d-flex flex-row card p-3 gap-3 border-primary-subtle rounded-4">
+                <div class="border p-1 rounded-2 flex-shrink-0">
+                  <img src="./assets/d1.jpg" class="img-fluid" width="200" alt="Donut Image" />
+                </div>
+                <div class="d-flex flex-column flex-grow-1">
+                  <div class="flex-fill">
+                    <h5>Glazed</h5>
+                    <p><b>$3.00</b></p>
+                    <p>A fluffy ring with a glazed frosting coating. Basically, the vanilla of donuts.</p>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-outline-primary" onclick="fbq('track', 'Purchase', {currency: 'USD', value: 3.0, content_ids: ['Glazed'], content_type: 'product'});">Order Now</button>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex flex-row card p-3 gap-3 border-primary-subtle rounded-4">
+                <div class="border p-1 rounded-2 flex-shrink-0">
+                  <img src="./assets/d2.jpg" class="img-fluid" width="200" alt="Donut Image" />
+                </div>
+                <div class="d-flex flex-column flex-grow-1">
+                  <div class="flex-fill">
+                    <h5>Chocolate</h5>
+                    <p><b>$3.50</b></p>
+                    <p>It's a fluffy ring with chocolate on it. What more could you want?</p>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-outline-primary" onclick="fbq('track', 'Purchase', {currency: 'USD', value: 3.5, content_ids: ['Chocolate'], content_type: 'product'});">Order Now</button>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex flex-row card p-3 gap-3 border-primary-subtle rounded-4">
+                <div class="border p-1 rounded-2 flex-shrink-0">
+                  <img src="./assets/d3.jpg" class="img-fluid" width="200" alt="Donut Image" />
+                </div>
+                <div class="d-flex flex-column flex-grow-1">
+                  <div class="flex-fill">
+                    <h5>Sprinkles</h5>
+                    <p><b>$3.50</b></p>
+                    <p>A traditional cake ring with chocolate or maple frosting and some character-adding sprinkles.</p>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-outline-primary" onclick="fbq('track', 'Purchase', {currency: 'USD', value: 3.5, content_ids: ['Sprinkles'], content_type: 'product'});">Order Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class="container-fulid text-center p-5" style="background-color: rgba(var(--bs-primary-rgb), .1)">
+            <p class="h4 text-primary-emphasis">My Donut Shop</p>
+            <p>1621 Polk St, San Francisco<br />(555) 010-2368</p>
+          </footer>
+        </body>
+        </html>`;
+      preview.srcdoc = beforeHeader + textarea.value + afterHeader;
+
+      saveButton.addEventListener('click', () => {
+        localStorage.setItem('donutShopHeaderValue', textarea.value);
+        const html = beforeHeader + textarea.value + afterHeader;
+        preview.srcdoc = html;
+      });
+    </script>
+  </body>
+</html>
